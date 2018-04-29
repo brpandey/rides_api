@@ -12,7 +12,7 @@ defmodule RidesApiWeb.KamakuraView do
 
   def render("feed.json", %{kamakura: feed}) do
     %{
-      passengers: "#{feed.driver} - #{feed.passenger}",
+      occupants: "#{feed.driver} - #{feed.passenger}",
       created_at: feed.created_at,
       car: feed.car
     }

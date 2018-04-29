@@ -129,7 +129,7 @@ defmodule RidesApi.Rentals do
 
     time = :os.system_time(:seconds)
 
-    %{driver: driver, passenger: p, car: car_name, created_at: time}
+    %{driver: driver, passenger: passenger, car: car_name, created_at: time}
   end
 
   @doc """
