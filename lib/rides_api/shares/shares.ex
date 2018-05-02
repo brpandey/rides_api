@@ -1,12 +1,12 @@
-defmodule RidesApi.Rentals do
+defmodule RidesApi.Shares do
   @moduledoc """
-  The Rentals context.
+  The car ride shares context.
   """
 
   import Ecto.Query, warn: false
   alias RidesApi.Repo
 
-  alias RidesApi.Rentals.{Feed, Person, Car}
+  alias RidesApi.Shares.{Feed, Person, Car}
 
   @first 1
   @pull_max_feeds 3

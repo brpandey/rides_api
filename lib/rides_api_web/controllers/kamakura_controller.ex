@@ -1,7 +1,7 @@
 defmodule RidesApiWeb.KamakuraController do
   use RidesApiWeb, :controller
 
-  alias RidesApi.Rentals
+  alias RidesApi.Shares
   alias RidesApiWeb.ControllerHelper, as: Helper
 
   @key :kamakura
@@ -10,7 +10,7 @@ defmodule RidesApiWeb.KamakuraController do
   def index(conn, _params) do
     case Helper.simulate_busy() do
       false ->
-        feeds = Rentals.list_feeds(@key)
+        feeds = Shares.list_feeds(@key)
         render(conn, "index.json", kamakura: feeds)
 
       true ->

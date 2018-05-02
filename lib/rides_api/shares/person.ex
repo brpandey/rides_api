@@ -1,8 +1,8 @@
-defmodule RidesApi.Rentals.Car do
+defmodule RidesApi.Shares.Person do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "cars" do
+  schema "persons" do
     field(:name, :string)
 
     timestamps()

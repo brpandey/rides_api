@@ -1,4 +1,4 @@
-defmodule RidesApi.Rentals.Feed do
+defmodule RidesApi.Shares.Feed do
   use Ecto.Schema
   import Ecto.Changeset
 
