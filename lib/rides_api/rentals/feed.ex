@@ -4,8 +4,8 @@ defmodule RidesApi.Rentals.Feed do
 
   schema "feeds" do
     field(:driver, :string)
-    field(:car, :string)
     field(:passenger, :string)
+    field(:car, :string)
     field(:created_at, :integer)
     field(:type, :string)
 

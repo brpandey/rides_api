@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias RidesApi.{Repo, Rentals.Car, Rentals.Passenger}
+alias RidesApi.{Repo, Rentals.Car, Rentals.Person}
 
 car_model_names = [
   "4Runner",
@@ -44,7 +44,7 @@ anime_names =
 
 # Normalize the lists into lists of the relevant structs
 m_list = car_model_names |> Enum.map(fn n -> %Car{name: "Toyota #{n}"} end)
-p_list = anime_names |> Enum.map(fn p -> %Passenger{name: p} end)
+p_list = anime_names |> Enum.map(fn p -> %Person{name: p} end)
 
 # Combine lists before we insert
 list = m_list ++ p_list

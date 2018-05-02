@@ -6,9 +6,7 @@ defmodule RidesApi.Rentals do
   import Ecto.Query, warn: false
   alias RidesApi.Repo
 
-  alias RidesApi.Rentals.Feed
-  alias RidesApi.Rentals.Passenger
-  alias RidesApi.Rentals.Car
+  alias RidesApi.Rentals.{Feed, Person, Car}
 
   @first 1
   @pull_max_feeds 3
@@ -118,12 +116,12 @@ defmodule RidesApi.Rentals do
     end
   end
 
-  @doc "Lets create the feed using random entries from the Passenger and Model tables"
+  @doc "Lets create the feed using random entries from the Person and Model tables"
   def generate_feed do
     [
-      %Passenger{name: driver},
-      %Passenger{name: passenger}
-    ] = Repo.all(from(p in Passenger, order_by: fragment("RANDOM()"), limit: 2))
+      %Person{name: driver},
+      %Person{name: passenger}
+    ] = Repo.all(from(p in Person, order_by: fragment("RANDOM()"), limit: 2))
 
     %Car{name: car_name} = Repo.one(from(c in Car, order_by: fragment("RANDOM()"), limit: 1))
 

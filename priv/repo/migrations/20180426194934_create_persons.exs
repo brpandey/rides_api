@@ -1,8 +1,8 @@
-defmodule RidesApi.Repo.Migrations.CreatePassengers do
+defmodule RidesApi.Repo.Migrations.CreatePersons do
   use Ecto.Migration
 
   def change do
-    create table(:passengers) do
+    create table(:persons) do
       add(:name, :string, null: false)
 
       timestamps()
@@ -12,6 +12,6 @@ defmodule RidesApi.Repo.Migrations.CreatePassengers do
     # Ensure we don't have multiple passenger records with the same name
     # a single name corresponds to a single passenger
 
-    create(unique_index(:passengers, [:name]))
+    create(unique_index(:persons, [:name]))
   end
 end
