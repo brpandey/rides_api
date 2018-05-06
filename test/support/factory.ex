@@ -1,6 +1,8 @@
 defmodule RidesApi.Factory do
   @moduledoc """
   Convenience functions for setting up test db data
+
+  Somewhat resembles ExMachina
   """
 
   alias RidesApi.{Repo, Shares.Car, Shares.Person}
@@ -14,6 +16,10 @@ defmodule RidesApi.Factory do
   def build(Person) do
     %Person{name: "some person"}
   end
+
+  #  def build_pair(Person, :random) do
+  #    build_list(2, Person, attrs)
+  #  end
 
   # Convenience functions
 

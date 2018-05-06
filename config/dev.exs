@@ -63,3 +63,22 @@ config :rides_api, RidesApi.Repo,
   hostname: "localhost",
   pool_size: 10,
   ownership_timeout: 50_000
+
+config :rides_api, RidesApi.Scheduler,
+  jobs: [
+    # runs clean every five minute for test
+    {"@daily", {RidesApi.Repo, :clean, [:feeds]}}
+  ]
+
+# to test run iex -S mix
+
+# crontab format
+
+# * * * * * *
+# | | | | | | 
+# | | | | | +-- Year              (range: 1900-3000)
+# | | | | +---- Day of the Week   (range: 1-7, 1 standing for Monday)
+# | | | +------ Month of the Year (range: 1-12)
+# | | +-------- Day of the Month  (range: 1-31)
+# | +---------- Hour              (range: 0-23)
+# +------------ Minute            (range: 0-59)

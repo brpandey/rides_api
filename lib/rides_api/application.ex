@@ -14,6 +14,7 @@ defmodule RidesApi.Application do
       supervisor(RidesApiWeb.Endpoint, []),
       # Start your own worker by calling: RidesApi.Worker.start_link(arg1, arg2, arg3)
       # worker(RidesApi.Worker, [arg1, arg2, arg3]),
+      worker(RidesApi.Scheduler, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

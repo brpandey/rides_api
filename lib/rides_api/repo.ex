@@ -8,4 +8,12 @@ defmodule RidesApi.Repo do
   def init(_, opts) do
     {:ok, Keyword.put(opts, :url, System.get_env("DATABASE_URL"))}
   end
+
+  @doc """
+  Ensure we keep the feed database from growing to large
+  Trigger by scheduler to clean occasionally
+  """
+  def clean(:feeds) do
+    RidesApi.Repo.delete_all(RidesApi.Shares.Feed)
+  end
 end
