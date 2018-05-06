@@ -1,4 +1,10 @@
 defmodule RidesApi.Shares.Person do
+  @moduledoc """
+  Mapper module for persons table
+  Provides validation and casting support as well as 
+  convenience db methods to create, and retrieve random persons
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   import Ecto.Query
@@ -11,6 +17,9 @@ defmodule RidesApi.Shares.Person do
     timestamps()
   end
 
+  @doc """
+  Casts and validates requirements, ensures name is unique
+  """
   def changeset(feed, attrs) do
     feed
     |> cast(attrs, [:name])

@@ -14,10 +14,12 @@ defmodule RidesApiWeb.ErrorView do
     Phoenix.Controller.status_message_from_template(template)
   end
 
+  @doc "Provides error json render clause for 400 status code"
   def render("400.json", _assigns) do
     %{error: "Query parameters invalid"}
   end
 
+  @doc "Provides error json render clause for 503 status code"
   def render("503.json", _assigns) do
     %{error: "Service temporarily unavailable"}
   end

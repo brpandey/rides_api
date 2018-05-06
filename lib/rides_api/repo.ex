@@ -1,4 +1,7 @@
 defmodule RidesApi.Repo do
+  # Injects the Ecto repo functions into the RidesApi app
+  # Enables Ecto functionality
+
   use Ecto.Repo, otp_app: :rides_api
 
   @doc """
@@ -12,6 +15,8 @@ defmodule RidesApi.Repo do
   @doc """
   Ensure we keep the feed database from growing to large
   Trigger by scheduler to clean occasionally
+
+  Clearly a lean database!
   """
   def clean(:feeds) do
     RidesApi.Repo.delete_all(RidesApi.Shares.Feed)

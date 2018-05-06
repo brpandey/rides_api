@@ -1,4 +1,9 @@
 defmodule RidesApi.Shares.Feed do
+  @moduledoc """
+  Mapper module for feeds table
+  Provides validation and casting support
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -12,7 +17,9 @@ defmodule RidesApi.Shares.Feed do
     timestamps()
   end
 
-  @doc false
+  @doc """
+  Casts and validates requirements
+  """
   def changeset(feed, attrs) do
     feed
     |> cast(attrs, [:driver, :passenger, :created_at, :car, :type])
