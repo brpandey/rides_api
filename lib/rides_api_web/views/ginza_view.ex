@@ -6,10 +6,6 @@ defmodule RidesApiWeb.GinzaView do
     %{rides: render_many(feeds, GinzaView, "feed.json")}
   end
 
-  def render("show.json", %{ginza: feed}) do
-    %{rides: render_one(feed, GinzaView, "feed.json")}
-  end
-
   def render("feed.json", %{ginza: feed}) do
     %{
       driver: feed.driver,

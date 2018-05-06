@@ -9,8 +9,9 @@ defmodule RidesApi.Shares do
   alias RidesApi.Shares.{Feed, Person, Car}
 
   @first 1
+  @min_persons 2
   @pull_max_feeds 3
-
+  @records_limit 100
   @providers [:ginza, :kamakura]
 
   @doc """
@@ -35,7 +36,14 @@ defmodule RidesApi.Shares do
 
     pkey = Atom.to_string(provider)
 
-    Repo.all(from(f in Feed, where: f.type == ^pkey))
+    Repo.all(
+      from(
+        f in Feed,
+        where: f.type == ^pkey,
+        order_by: [desc: :created_at],
+        limit: @records_limit
+      )
+    )
   end
 
   def list_feeds(provider, last_checked_at)
@@ -53,7 +61,9 @@ defmodule RidesApi.Shares do
       from(
         f in Feed,
         where: f.type == ^pkey,
-        where: f.created_at >= ^last_checked_at
+        where: f.created_at >= ^last_checked_at,
+        order_by: [desc: :created_at],
+        limit: @records_limit
       )
     )
   end
@@ -81,17 +91,16 @@ defmodule RidesApi.Shares do
       case n do
         # If we have a list that is zero or one elements we don't need to shuffle it
         0 ->
-          # prepend the provider that we deleted since we'll insert it anyways
+          # add the provider that we deleted since we'll insert it anyways
           [provider]
 
         1 ->
           # Lets make a 25% chance that we choose to duplicate
           [flag] = [true, false, false, false] |> Enum.shuffle() |> Enum.take(@first)
 
-          if flag do
-            [provider] ++ providers
-          else
-            [provider]
+          case flag do
+            true -> [provider] ++ providers
+            false -> [provider]
           end
 
         # Including generic case for posterity
@@ -104,7 +113,7 @@ defmodule RidesApi.Shares do
 
     # Insert feed for current providers and a random collection
     # of providers that is half the size of the providers list
-    for p <- providers do
+    Enum.each(providers, fn p ->
       # Convert to string
       pkey = Atom.to_string(p)
 
@@ -113,17 +122,14 @@ defmodule RidesApi.Shares do
 
       # Write feed to db
       {:ok, %Feed{}} = create_feed(attrs)
-    end
+    end)
   end
 
   @doc "Lets create the feed using random entries from the Person and Model tables"
   def generate_feed do
-    [
-      %Person{name: driver},
-      %Person{name: passenger}
-    ] = Repo.all(from(p in Person, order_by: fragment("RANDOM()"), limit: 2))
+    [%Person{name: driver}, %Person{name: passenger}] = Person.randoms(@min_persons)
 
-    %Car{name: car_name} = Repo.one(from(c in Car, order_by: fragment("RANDOM()"), limit: 1))
+    %Car{name: car_name} = Car.random()
 
     time = :os.system_time(:seconds)
 

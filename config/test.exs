@@ -16,4 +16,5 @@ config :rides_api, RidesApi.Repo,
   password: "postgres",
   database: "rides_api_test",
   hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  pool: Ecto.Adapters.SQL.Sandbox,
+  ownership_timeout: 50_000

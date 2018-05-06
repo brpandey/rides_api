@@ -11,8 +11,14 @@ config :rides_api, RidesApiWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: [
+      "node_modules/brunch/bin/brunch",
+      "watch",
+      "--stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
@@ -55,4 +61,5 @@ config :rides_api, RidesApi.Repo,
   password: "postgres",
   database: "rides_api_dev",
   hostname: "localhost",
-  pool_size: 10
+  pool_size: 10,
+  ownership_timeout: 50_000
