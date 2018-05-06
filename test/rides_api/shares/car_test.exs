@@ -1,8 +1,6 @@
 defmodule RidesApi.Shares.CarRepoTest do
   use RidesApi.DataCase
-  alias RidesApi.Shares.Car
-
-  alias RidesApi.Test.Helper
+  alias RidesApi.{Factory, Shares.Car}
 
   @valid_attrs %{name: "Mirai"}
   @invalid_attrs %{name: 123}
@@ -27,7 +25,7 @@ defmodule RidesApi.Shares.CarRepoTest do
     size = 10
     min_keys_rand = 3
 
-    Helper.insert(:car, "Mirai", size)
+    Factory.insert_list(Car, %{name: "Mirai"}, size, :repeating_suffix)
 
     list = Stream.cycle([0]) |> Enum.take(size)
 
@@ -44,8 +42,10 @@ defmodule RidesApi.Shares.CarRepoTest do
     # To validate that output is sufficiently random enough
     # Let's create simple heuristic
 
-    # Let's say that given 10 unique car each with 10 unique name lengths,
-    # taken 10 randomly, we will have atleast 3 groupings of unique names
+    # Let's say that given 10 unique cars each with 10 unique name lengths,
+    # take 10 randomly,
+    # We will expect to have atleast 3 groupings of names 
+    # to ensure random is sufficiently random
 
     # Clearly if random wasn't working we may get the same name
     # Hence this would be 1 grouping

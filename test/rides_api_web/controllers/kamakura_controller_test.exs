@@ -6,20 +6,8 @@ defmodule RidesApiWeb.KamakuraControllerTest do
   @code_resource_unavailable 503
   @code_success 200
 
-  #  setup_all do
-  #    :ok = Ecto.Adapters.SQL.Sandbox.checkout(RidesApi.Repo)
-  #    # Run seeds so we have something meaningful in our tests
-  #    Mix.Tasks.Run.run(["priv/repo/seeds.exs"])
-
-  #    on_exit(fn ->
-  #      :ok = Ecto.Adapters.SQL.Sandbox.checkout(RidesApi.Repo)
-
-  #      Helper.delete_db_data(:all)
-  #    end)
-  #  end
-
   setup %{conn: conn} do
-    Helper.insert(:all)
+    Helper.insert(:seeds)
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 

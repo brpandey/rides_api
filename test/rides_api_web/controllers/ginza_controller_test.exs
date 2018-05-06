@@ -11,9 +11,8 @@ defmodule RidesApiWeb.GinzaControllerTest do
   @dummy_invalid_timestamp :hello
 
   setup %{conn: conn} do
-    # Run seeds so we have something meaningful in our tests
-    Helper.insert(:all)
-    # :ok = Mix.Tasks.Run.run(["priv/repo/seeds.exs"])
+    # Insert data so we have something meaningful in our tests
+    Helper.insert(:seeds)
 
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end

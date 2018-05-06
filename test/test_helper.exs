@@ -5,7 +5,7 @@ Ecto.Adapters.SQL.Sandbox.mode(RidesApi.Repo, :manual)
 defmodule RidesApi.Test.Helper do
   alias RidesApi.{Shares.Car, Shares.Person}
 
-  def insert(:all) do
+  def insert(:seeds) do
     car_model_names = [
       "4Runner",
       "86",
@@ -42,16 +42,5 @@ defmodule RidesApi.Test.Helper do
 
     c_list |> Enum.map(fn c -> {_a, _c} = Car.create(c) end)
     p_list |> Enum.map(fn p -> {_a, _p} = Person.create(p) end)
-  end
-
-  def insert(:car, name, size) when is_binary(name) and is_integer(size) do
-    for n <- 1..size do
-      # For increase larger n have a repeated pattern of n
-      # So if n is 3 repeat the String "3", three times
-      # Convert back to String
-
-      suffix = Stream.cycle([n]) |> Enum.take(n) |> Enum.join()
-      _ = Car.create(%{name: "#{name}#{suffix}"})
-    end
   end
 end

@@ -1,6 +1,6 @@
 defmodule RidesApi.Shares.PersonRepoTest do
   use RidesApi.DataCase
-  alias RidesApi.Shares.Person
+  alias RidesApi.{Factory, Shares.Person}
 
   @valid_attrs %{name: "Kengo"}
   @invalid_attrs %{name: 123}
@@ -22,14 +22,14 @@ defmodule RidesApi.Shares.PersonRepoTest do
   end
 
   test "ensure randoms are unique" do
+    size = 10
+
     # create 10 persons
-    for n <- 1..10 do
-      _ = Person.create(%{name: "Kengo#{n}"})
-    end
+    Factory.insert_list(Person, %{name: "Kengo"}, size, :sequence)
 
     # Run ten times to fetch driver and passenger randomly
     # Ensure they never equal each other
-    for _n <- 1..10 do
+    for _n <- 1..size do
       [%Person{name: x}, %Person{name: y}] = Person.randoms(2)
       assert false == String.equivalent?(x, y)
     end

@@ -54,8 +54,6 @@ defmodule RidesApi.SharesTest do
     setup :setup_overlaps
 
     test "ensure feeds overlap from different providers" do
-      IO.puts("waka3")
-
       # Pull feeds for ginza and kamakura and filter out the non-essentials 
       # For example: id, updated at, inserted_at etc..
       gfeeds = Shares.list_feeds(@ginza) |> filter_helper
@@ -74,7 +72,7 @@ defmodule RidesApi.SharesTest do
 
   defp setup_overlaps(_context) do
     # Insert test data
-    Helper.insert(:all)
+    Helper.insert(:seeds)
 
     # Pull feeds for ginza multiple times to ensure we've generated
     # some duplicates
