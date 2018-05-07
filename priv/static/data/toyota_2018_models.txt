@@ -1,0 +1,25 @@
+model_name
+4Runner
+86
+Avalon
+Avalon Hybrid
+C-HR
+Camry
+Camry Hybrid
+Corolla
+Corolla iM
+Highlander
+Highlander Hybrid
+Land Cruiser
+Mirai
+Prius
+Prius c
+Prius Prime
+RAV4
+RAV4 Hybrid
+Sequoia
+Sienna
+Tacoma
+Tundra
+Yaris
+Yaris iA
