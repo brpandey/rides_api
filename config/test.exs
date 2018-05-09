@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :rides_api, RidesApi.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("DB_USER_NAME"),
+  password: System.get_env("DB_USER_PASSWORD"),
   database: "rides_api_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,

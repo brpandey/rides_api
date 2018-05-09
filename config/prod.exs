@@ -15,8 +15,22 @@ use Mix.Config
 # which you typically run after static files are built.
 config :rides_api, RidesApiWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  # Without this line, your app will not start the web server!
+  server: true,
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  url: [host: "localhost", port: System.get_env("PORT")]
+
+#  cache_static_manifest: "priv/static/cache_manifest.json"
+
+config :rides_api, RidesApi.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("DB_USER_NAME"),
+  password: System.get_env("DB_USER_PASSWORD"),
+  database: "rides_api_prod",
+  url: System.get_env("DATABASE_URL"),
+  # Free tier db only allows 1 connection
+  pool_size: 1,
+  ssl: true
 
 # Do not print debug messages in production
 config :logger, level: :info

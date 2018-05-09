@@ -12,14 +12,20 @@
 
 alias RidesApi.{Shares.Car, Shares.Person}
 
+root_path = :code.priv_dir(:rides_api)
+car_file_path = "static/data/toyota_2018_models.txt"
+anime_file_path = "static/data/japanese_anime_character_names.txt"
+
 car_model_names =
-  File.stream!("priv/static/data/toyota_2018_models.txt")
+  Path.join(root_path, car_file_path)
+  |> File.stream!()
   |> CSV.decode!(headers: true)
   |> Enum.reduce([], fn %{"model_name" => v} = _row, acc -> [v] ++ acc end)
   |> Enum.reverse()
 
 anime_names =
-  File.stream!("priv/static/data/japanese_anime_character_names.txt")
+  Path.join(root_path, anime_file_path)
+  |> File.stream!()
   |> CSV.decode!(separator: ?,)
   |> Enum.map(fn v -> v end)
   |> List.flatten()

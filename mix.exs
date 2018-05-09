@@ -42,7 +42,8 @@ defmodule RidesApi.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:quantum, ">= 2.2.0"},
-      {:csv, "~> 2.0.0"}
+      {:csv, "~> 2.0.0"},
+      {:distillery, "~> 1.5", runtime: false}
     ]
   end
 
