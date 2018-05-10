@@ -1,4 +1,4 @@
-# RidesApi
+# RidesApi 絆
 
 Implements json api server to provide car ride shares data
 
@@ -11,12 +11,13 @@ $ source sample.env
 ## Assignment
 
 The assignment consists in fetching data about car ride shares from a few made-up data providers. The fetched data should be normalized into a unified format and persisted to a local database.
+
 Data providers
 
-We made up two different data providers: Kamakurashares and GinzaRides. These providers are accessible as an HTTP API specified below. All providers are hosted at http://0.0.0.0:4000.
+We made up two different data providers: Kamakurashares and GinzaRides. These providers are accessible as an HTTP API specified below. 
 
-* http://0.0.0.0:4000/feed/v1/ginzarides
-* http://0.0.0.0:4000/feed/v1/kamakurashares
+* 絆.xyz/feed/v1/ginzarides
+* 絆.xyz/feed/v1/kamakurashares
 
 ### Kamakurashares
 

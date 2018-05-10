@@ -66,7 +66,6 @@ config :rides_api, RidesApi.Repo,
 
 config :rides_api, RidesApi.Scheduler,
   jobs: [
-    # runs clean every five minute for test
     {"@daily", {RidesApi.Repo, :clean, [:feeds]}}
   ]
 

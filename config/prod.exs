@@ -35,6 +35,12 @@ config :rides_api, RidesApi.Repo,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :rides_api, RidesApi.Scheduler,
+  jobs: [
+    # runs clean daily at midnight
+    {"@daily", {RidesApi.Repo, :clean, [:feeds]}}
+  ]
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
