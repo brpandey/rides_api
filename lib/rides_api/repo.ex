@@ -1,8 +1,8 @@
 defmodule RidesApi.Repo do
   # Injects the Ecto repo functions into the RidesApi app
   # Enables Ecto functionality
-
   use Ecto.Repo, otp_app: :rides_api
+  require Logger
 
   @doc """
   Dynamically loads the repository url from the
@@ -19,6 +19,7 @@ defmodule RidesApi.Repo do
   Clearly a lean database!
   """
   def clean(:feeds) do
+    Logger.info("About to remove all feeds")
     RidesApi.Repo.delete_all(RidesApi.Shares.Feed)
   end
 end
