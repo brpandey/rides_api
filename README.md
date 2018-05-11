@@ -4,7 +4,7 @@ Implements json api server to provide car ride shares data
 
 Hosts the assignment backend as described below
 
-Kizuna 絆 - http://www.bbc.com/news/world-asia-16321999
+Kizuna 絆 (http://www.bbc.com/news/world-asia-16321999)
 
 ```elixir
 $ source sample.env
@@ -14,7 +14,7 @@ $ source sample.env
 
 The assignment consists in fetching data about car ride shares from a few made-up data providers. The fetched data should be normalized into a unified format and persisted to a local database.
 
-Data providers
+### Data providers
 
 We made up two different data providers: Kamakurashares and GinzaRides. These providers are accessible as an HTTP API specified below. 
 
