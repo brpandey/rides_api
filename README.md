@@ -80,3 +80,6 @@ What to keep in mind
 * The application must be able to handle all errors that are expected to occur, the application is expected to be resilient and never crash in a non-recoverable way (excluding for Erlang VM bugs or crashes)
 * Do not over-engineer the solution, think of the simplest way to solve the assignment without go too far with too much indirection or application architecture
 * Clarify any assumptions you have made about the assignment or things you left out of your solution
+
+
+Thanks!
