@@ -2,7 +2,7 @@
 
 Implements json api server to provide car ride shares data
 
-Hosts the assignment backend as described below
+Hosts backend as described below
 
 Kizuna 絆 (http://www.bbc.com/news/world-asia-16321999)
 
