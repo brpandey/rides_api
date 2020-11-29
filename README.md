@@ -17,8 +17,8 @@ The assignment consists in fetching data about car ride shares from a few made-u
 
 We made up two different data providers: Kamakurashares and GinzaRides. These providers are accessible as an HTTP API specified below. 
 
-* http://www.tripsutras.com/feed/v1/ginzarides
-* http://www.tripsutras.com/feed/v1/kamakurashares
+* https://www.tripsutras.com/feed/v1/ginzarides
+* https://www.tripsutras.com/feed/v1/kamakurashares
 
 ### Kamakurashares
 
