@@ -4,7 +4,6 @@ Implements json api server to provide car ride shares data
 
 Hosts backend as described below
 
-Kizuna 絆 (http://www.bbc.com/news/world-asia-16321999)
 
 ```elixir
 $ source sample.env
@@ -18,8 +17,8 @@ The assignment consists in fetching data about car ride shares from a few made-u
 
 We made up two different data providers: Kamakurashares and GinzaRides. These providers are accessible as an HTTP API specified below. 
 
-* http://絆.xyz/feed/v1/ginzarides
-* http://絆.xyz/feed/v1/kamakurashares
+* http://www.tripsutras.com/feed/v1/ginzarides
+* http://www.tripsutras.com/feed/v1/kamakurashares
 
 ### Kamakurashares
 
